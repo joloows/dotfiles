@@ -1,0 +1,33 @@
+env:
+  TERM: alacritty
+
+window:
+  # padding:
+    # x: 16
+    # y: 10
+
+  decorations: none
+
+  opacity: 0.9
+
+font:
+  normal:
+    family: Hack Nerd Font Mono
+
+  size: 12.0
+
+colors:
+  primary:
+    # background: '#01152D'
+    # background: '#161629'
+    background: '#0f0f1f'
+
+cursor:
+  style:
+    shape: Beam
+    blinking: Always
+  blink_interval: 800
+  blink_timeout: 0
+
+  vi_mode_style:
+    shape: Block

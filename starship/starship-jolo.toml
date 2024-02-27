@@ -1,0 +1,86 @@
+
+format = """\
+[](bold fg:#33658A)\
+[\uf120 ](bg:#33658A)\
+[](bg:#FF9248 fg:#33658A)\
+[  ](bg:#FF9248 fg:#000000)\
+$directory\
+[](fg:#FF9248 bg:bright-green)\
+$git_branch\
+$git_status\
+[ ](fg:bright-green)\
+$fill \
+$cmd_duration\
+$java\
+$python\
+$nodejs\
+$rust\
+$git_metrics
+$character\
+"""
+
+[fill]
+symbol = " "
+style = "bold #585858"
+
+[directory]
+style = "bg:#FF9248 fg:black"
+format = "[$path ]($style)"
+truncation_length = 4
+truncate_to_repo = false
+truncation_symbol = "../"
+
+[directory.substitutions]
+"Documents" = "Documents  "
+"Downloads" = "Downloads  "
+"Music" = "Music  "
+"Pictures" = "Pictures "
+"VScode Projects" = "vs"
+
+[git_branch]
+symbol = " "
+style = "bg:bright-green fg:#000000"
+format = '[[ $symbol $branch ](bg:bright-green fg:000000)]($style)'
+
+[git_status]
+style = "bg:bright-green"
+format = '[[($all_status$ahead_behind )](bg:bright-green fg:#000000)]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:#86BBD8"
+format = '[[[](bold fg:#86BBD8)$symbol $version](bg:#86BBD8)[ ](bold fg:#86BBD8)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:#AF400E"
+format = '[[[](bold fg:#AF400E)[$symbol ($version) ](bg:#AF400E)[ ](bold fg:#AF400E)]($style)'
+
+[cmd_duration]
+min_time = 1000
+style = "bg:light blue"
+show_milliseconds = false
+format = '[[[](bold fg:#52A2DA) $duration](fg:black bg:#52A2DA)[ ](fg:#52A2DA)]($style)'
+
+[java]
+# Added kotlin files
+detect_extensions = ["java", "class", "gradle", "jar", "cljs", "cljc", "kt", "kts"]
+style= "bg:FFA518"
+format = '[[[](bold fg:#FFA518) $version](fg:white bg:#FFA518)[ ](fg:#FFA518)]($style)'
+
+[python]
+detect_extensions = ["py"]
+style = "bg:#306998"
+format = '[[[](bold fg:#306998) $virtualenv $version](fg:#FFD43B bg:#306998)[ ](fg:#306998)]($style)'
+
+[git_metrics]
+disabled = false
+added_style = "green"
+deleted_style = "red"
+format = '[+$added]($added_style)/[-$deleted ]($deleted_style)'
+
+[character]
+disabled = false
+success_symbol = "[>](bold green)"
+error_symbol = "[×](bold red)"
+vicmd_symbol = "[<](bold green)"
